@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
-import CardExample from './CardExample';
+import CardExample from './UI-components/CardExample';
 import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
