@@ -79,7 +79,7 @@ class app extends Component{
                                  <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />}><NavLink to="/patient">Patients</NavLink></ListItem>
                                  <br />
                                  <Divider style={dividerStyle} />
-                                <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} primary={true} onTouchTap={ () => this.signOut()} />
+                                <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
                         <CardExample />
