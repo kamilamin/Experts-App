@@ -14,7 +14,7 @@ import {Card, CardText} from 'material-ui/Card';
 //     <CardTitle title="Card title" subtitle="Card subtitle" />
 
 const cardStyles = {
-  marginTop: '60'
+  marginTop: 60
 }
 
 const CardExample = () => (

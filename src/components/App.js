@@ -18,8 +18,8 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import userJPG from './image/user.jpg';
-
-
+import { NavLink } from 'react-router-dom'
+import Patient from './Patient.js';
 
 
 
@@ -76,7 +76,7 @@ class app extends Component{
                                 <Divider style={dividerStyle} />
                                  <ListItem leftAvatar={<Avatar icon={<Person />} backgroundColor={blue500} />} primaryText="Profile" />
                                  <ListItem leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} />} primaryText="Reports" />
-                                 <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />} primaryText="Patient" />
+                                 <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />}><NavLink to="/patient">Patients</NavLink></ListItem>
                                  <br />
                                  <Divider style={dividerStyle} />
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} primary={true} onTouchTap={ () => this.signOut()} />
