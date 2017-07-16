@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { firebaseApp } from '../firebase';
 
+const form_heading = {
+    textAlign: 'center',
+    fontSize: '200%'
+};
+
+const form_login = {
+    border: '1px solid #eee',
+    padding: '5%',
+    marginLeft: '20%',
+    marginRight: '20%',
+    boxShadow: '10px 10px 50px #eee'
+};
+
 class SignUp extends Component{
     constructor(props){
         super(props);
@@ -22,20 +35,19 @@ class SignUp extends Component{
             })
     }
 
-
     render(){
         return (
-            <div className='form-inline' style={{margin: '5%'}}>
-                <h2>Sign Up</h2>
-                <div className='form-group'>
-                    <input className="form-control" type="text" placeholder='email' onChange={event => this.setState({email: event.target.value})} style={{marginRight: '5px'}} />
-                    <input className='form-control' type="password" placeholder='Password' onChange={event => this.setState({password: event.target.value})} style={{marginRight: '5px'}} />
-                    <button className='btn btn-primary' type='button' onClick={ () => this.signUp() }>Sign Up</button>
+            <div style={{margin: '5%'}}>
+                <div style={form_login}>
+                    <h2 style={form_heading}>SIGN UP</h2>
+                    <input className="form-control" type="text" placeholder='Email Address' onChange={event => this.setState({email: event.target.value})} style={{marginBottom: '5px'}} required/>
+                    <input className='form-control' type="password" placeholder='Password' onChange={event => this.setState({password: event.target.value})} required />
+                    <button className='btn btn-primary btn-block' type='button' onClick={ () => this.signUp() } style={{marginTop: '5px'}}>Sign Up</button>
+                    <div style={{marginTop: '5px'}}>
+                        <Link to='/signin'> Already a user? Sign in instead</Link>
+                    </div>
+                    <div>{this.state.error.message}</div>
                 </div>
-                <div style={{marginTop: '5px'}}>
-                    <Link to='/signin'> Already a user? Sign in instead</Link>
-                </div>
-                <div>{this.state.error.message}</div>
             </div>
         )
     }
