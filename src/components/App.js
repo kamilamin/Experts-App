@@ -17,7 +17,6 @@ import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
-import userJPG from './image/user.jpg';
 import { NavLink } from 'react-router-dom'
 import Patient from './Patient.js';
 import Report from './Report.js';
