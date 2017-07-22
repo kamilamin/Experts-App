@@ -13,6 +13,7 @@ import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
+import Apps from 'material-ui/svg-icons/navigation/apps';
 import { NavLink } from 'react-router-dom'
 
 const logoutStyles = {
@@ -47,6 +48,7 @@ class Report extends Component{
                                 </Card>
                                 <br />
                                 <Divider style={dividerStyle} />
+                                 <ListItem leftAvatar={<Avatar icon={<Apps />} backgroundColor={blue500} />}><NavLink to="/App">Dashboard</NavLink></ListItem>
                                  <ListItem leftAvatar={<Avatar icon={<Person />} backgroundColor={blue500} />}><NavLink to="/profile">Profile</NavLink></ListItem>
                                  <ListItem leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} />}><NavLink to="/report">Reports</NavLink></ListItem>
                                  <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />}><NavLink to="/patient">Patients</NavLink></ListItem>
