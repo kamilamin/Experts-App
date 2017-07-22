@@ -39,7 +39,7 @@ class Patient extends Component{
         return (
                 <MuiThemeProvider>
                     <div>
-                        <AppBar title='Expert System For Dermatologist' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
+                        <AppBar title='Patient' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
                         <Drawer open={this.state.drawerOpened} docked={false} onRequestChange={() => this._toggleDrawer()}>
                             <List>
                                 <Card>
