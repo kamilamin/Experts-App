@@ -62,7 +62,6 @@ class app extends Component{
     
     render(){
         return (
-            <div>
                 <MuiThemeProvider>
                     <div>
                         <AppBar title='Expert System For Dermatologist' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
@@ -84,7 +83,6 @@ class app extends Component{
                         <CardExample />
                     </div>
                 </MuiThemeProvider>
-            </div>
         )
     }
 }
