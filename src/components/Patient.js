@@ -22,7 +22,17 @@ const logoutStyles = {
 
 const dividerStyle = {
     margin: 10
-}
+};
+
+const cardStyle = {
+    marginTop: 25,
+    marginLeft: 10,
+    marginRight: 10
+};
+
+const actionStyle = {
+    marginLeft: 500,
+};
 
 class Patient extends Component{
     constructor() {
@@ -40,7 +50,7 @@ class Patient extends Component{
         return (
                 <MuiThemeProvider>
                     <div>
-                        <AppBar title='Patient' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
+                        <AppBar title='Patient Information' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
                         <Drawer open={this.state.drawerOpened} docked={false} onRequestChange={() => this._toggleDrawer()}>
                             <List>
                                 <Card>
@@ -57,6 +67,26 @@ class Patient extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
+                        <Card style={cardStyle}>
+                            <CardHeader style={{fontSize: '200%', textAlign: 'center', padding:'2%'}}>Welcome to Patient Information</CardHeader>
+                            <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
+                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
+                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
+                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
+                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                            </CardText>
+                            <CardActions style={actionStyle}>
+                                <FlatButton style={{marginRight:10}} label="Add Patient" />
+                                <FlatButton style={{marginLeft:10}} label="View Patient" />
+                            </CardActions>
+                        </Card>
                     </div>
                 </MuiThemeProvider>
         )
