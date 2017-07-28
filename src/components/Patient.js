@@ -14,7 +14,7 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const logoutStyles = {
     marginTop: 275
@@ -83,7 +83,7 @@ class Patient extends Component{
                             Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
                             </CardText>
                             <CardActions style={actionStyle}>
-                                <FlatButton style={{marginRight:10}} label="Add Patient" />
+                                <Link to='/addpatient'><FlatButton style={{marginRight:10}} label="Add Patient" /></Link>
                                 <FlatButton style={{marginLeft:10}} label="View Patient" />
                             </CardActions>
                         </Card>
