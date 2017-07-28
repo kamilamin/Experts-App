@@ -8,6 +8,7 @@ import SignIn from './components/SignIn.js';
 import Patient from './components/Patient.js';
 import Report from './components/Report.js';
 import Profile from './components/Profile.js';
+import addPatient from './components/addPatient.js'
 import { Router, Route, NavLink } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux'
@@ -45,6 +46,7 @@ ReactDOM.render(
                 <Route path="/patient" component={Patient} />
                 <Route path="/report" component={Report} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/addpatient" component={addPatient} />
             </div>
         </Router>
     </Provider>, 
