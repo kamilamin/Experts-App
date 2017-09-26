@@ -8,8 +8,9 @@ import SignIn from './components/SignIn.js';
 import Patient from './components/Patient.js';
 import Report from './components/Report.js';
 import Profile from './components/Profile.js';
-import addPatient from './components/addPatient.js'
-import { Router, Route, NavLink } from 'react-router-dom';
+import addPatient from './components/addPatient.js';
+import viewPatient from './components/viewPatient.js';
+import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -31,8 +32,6 @@ firebaseApp.auth().onAuthStateChanged(user => {
 })
 
 
-
-
 const history = createBrowserHistory();
 const store = createStore(reducer);
 
@@ -47,6 +46,7 @@ ReactDOM.render(
                 <Route path="/report" component={Report} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/addpatient" component={addPatient} />
+                <Route path="/viewpatient" component={viewPatient} />
             </div>
         </Router>
     </Provider>, 

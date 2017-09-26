@@ -7,14 +7,14 @@ import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader } from 'material-ui/Card';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 const logoutStyles = {
     marginTop: 275
@@ -22,19 +22,9 @@ const logoutStyles = {
 
 const dividerStyle = {
     margin: 10
-};
+}
 
-const cardStyle = {
-    marginTop: 25,
-    marginLeft: 10,
-    marginRight: 10
-};
-
-const actionStyle = {
-    marginLeft: 500,
-};
-
-class Patient extends Component{
+class viewPatient extends Component{
     constructor() {
         super();
         this.state = {
@@ -50,7 +40,7 @@ class Patient extends Component{
         return (
                 <MuiThemeProvider>
                     <div>
-                        <AppBar title='Patient Information' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
+                        <AppBar title='View Patients Information' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
                         <Drawer open={this.state.drawerOpened} docked={false} onRequestChange={() => this._toggleDrawer()}>
                             <List>
                                 <Card>
@@ -67,30 +57,10 @@ class Patient extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
-                        <Card style={cardStyle}>
-                            <CardHeader style={{fontSize: '200%', textAlign: 'center', padding:'2%'}}>Welcome to Patient Information</CardHeader>
-                            <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
-                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
-                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
-                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. 
-                            Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                            </CardText>
-                            <CardActions style={actionStyle}>
-                                <Link to='/addpatient'><FlatButton style={{marginRight:10}} label="Add Patient" /></Link>
-                                <Link to='/viewpatient'><FlatButton style={{marginLeft:10}} label="View Patient" /></Link>
-                            </CardActions>
-                        </Card>
                     </div>
                 </MuiThemeProvider>
         )
     }
 }
 
-export default Patient;
+export default viewPatient;

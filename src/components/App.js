@@ -11,31 +11,19 @@ import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardHeader } from 'material-ui/Card';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import Patient from './Patient.js';
 import Report from './Report.js';
 import Profile from './Profile.js';
 
-// import FileFolder from 'material-ui/svg-icons/file/folder';
-// import {
-//   blue300,
-//   indigo900,
-//   orange200,
-//   deepOrange300,
-//   pink400,
-//   purple500,
-// } from 'material-ui/styles/colors';
-// leftAvatar={<Avatar src={reportICON}/>} ;  leftIcon={<Person />
-
-
 const logoutStyles = {
-    marginTop: 275
+    marginTop: 285
 };
 
 const dividerStyle = {
