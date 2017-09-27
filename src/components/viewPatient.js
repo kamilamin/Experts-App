@@ -14,7 +14,8 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { database } from '../firebase'
 
 const logoutStyles = {
     marginTop: 275
@@ -23,7 +24,9 @@ const logoutStyles = {
 const dividerStyle = {
     margin: 10
 }
-
+const viewData = {
+    marginLeft: 60
+}
 class viewPatient extends Component{
     constructor() {
         super();
@@ -31,6 +34,16 @@ class viewPatient extends Component{
             drawerOpened: false
         }
     }
+
+    componentDidMount () {
+        this.patientRef = database.ref('/Patients-information');
+        this.patientRef.on('value', (snapshot) => {
+            this.setState({
+                data: snapshot.val()
+            });
+        });
+    }
+    
     _toggleDrawer() {
         this.setState({
             drawerOpened: !this.state.drawerOpened
@@ -57,6 +70,9 @@ class viewPatient extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
+                        <div style={viewData}>
+                            { JSON.stringify(this.state.data) }
+                        </div>
                     </div>
                 </MuiThemeProvider>
         )
