@@ -48,8 +48,15 @@ class addPatient extends Component{
         this.patientRef = database.ref('/Patients-information');
         this.submitPatient = this.submitPatient.bind(this);
     };
+    componentDidMount () {
+        this.patientRef.on('value', (snapshot) => {
+            this.setState({
+                data: snapshot.val()
+            });
+        });
+    }
     
-
+    
     _genderChange = (event, index, Patient_Gender) => this.setState({ Patient_Gender })
 
     _typeChange = (event, index, value) => this.setState({value})
@@ -119,6 +126,7 @@ class addPatient extends Component{
                         </div>
                             <RaisedButton label='Submit' primary={true} style={{float: 'right', marginRight: '20%', marginTop: '10%'}} onClick={this.submitPatient}/>
                         </div>
+                        { JSON.stringify(this.state.data) }
                     </div>
                 </MuiThemeProvider>
         )
