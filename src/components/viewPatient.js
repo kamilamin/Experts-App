@@ -15,7 +15,7 @@ import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
 import { NavLink } from 'react-router-dom';
-import { database } from '../firebase'
+import { database } from '../firebase.js';
 
 const logoutStyles = {
     marginTop: 275

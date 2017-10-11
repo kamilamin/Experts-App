@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardText} from 'material-ui/Card';
-import Slider from './Slider.js';
+import Slider from './Slider';
 
 const cardStyles = {
   margin: 80

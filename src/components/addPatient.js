@@ -19,7 +19,7 @@ import { NavLink } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import { database } from '../firebase';
+import { database } from '../firebase.js';
 
 const logoutStyles = {
     marginTop: 275
