@@ -126,7 +126,6 @@ class addPatient extends Component{
                         </div>
                             <RaisedButton label='Submit' primary={true} style={{float: 'right', marginRight: '20%', marginTop: '10%'}} onClick={this.submitPatient}/>
                         </div>
-                        { JSON.stringify(this.state.data) }
                     </div>
                 </MuiThemeProvider>
         )

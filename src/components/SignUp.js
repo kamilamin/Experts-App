@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { firebaseApp } from '../firebase';
+import signup from './image/cancer_patient.jpg';
 
 const form_heading = {
     textAlign: 'center',
@@ -9,10 +10,10 @@ const form_heading = {
 
 const form_login = {
     border: '1px solid #eee',
-    padding: '5%',
-    marginLeft: '20%',
-    marginRight: '20%',
-    boxShadow: '10px 10px 50px #eee'
+    padding: '4%',
+    marginTop: '-24%',
+    marginLeft: '60%',
+    boxShadow: '10px 10px 50px #eee',
 };
 
 class SignUp extends Component{
@@ -38,6 +39,10 @@ class SignUp extends Component{
     render(){
         return (
             <div style={{margin: '5%'}}>
+                <div>
+                    <h1 style={{marginBottom: '5%', textAlign: 'center'}}>Expert System For Dermatologist</h1>
+                </div>
+                <img style={{width: '55%', height: '80%'}} src={signup} alt='Welcome to system' />
                 <div style={form_login}>
                     <h2 style={form_heading}>SIGN UP</h2>
                     <input className="form-control" type="text" placeholder='Email Address' onChange={event => this.setState({email: event.target.value})} style={{marginBottom: '5px'}} required/>

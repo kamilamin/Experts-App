@@ -10,8 +10,7 @@ const form_heading = {
 const form_login = {
     border: '1px solid #eee',
     padding: '5%',
-    marginLeft: '20%',
-    marginRight: '20%',
+    marginLeft: '70%',
     boxShadow: '10px 10px 50px #eee'
 };
 
@@ -37,6 +36,9 @@ class SignIn extends Component{
     render(){
         return (
             <div style={{margin: '5%'}}>
+                <div>
+                    <h1>Expert System For Dermatologist</h1>
+                </div>
                 <div style={form_login}>
                     <h2 style={form_heading}>SIGN IN</h2>
                     <input className="form-control" type="text" placeholder='Email Address' onChange={event => this.setState({email: event.target.value})} style={{marginBottom: '5px'}} required />
