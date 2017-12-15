@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setDatas } from '../actions';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -25,22 +27,26 @@ const dividerStyle = {
     margin: 10
 }
 const viewData = {
-    marginLeft: 60
+    marginLeft: 60,
+    marginTop: 50
 }
 class viewPatient extends Component{
-    constructor() {
-        super();
+    constructor(props, context) {
+        super(props, context);
         this.state = {
             drawerOpened: false
-        }
+        };
     }
 
-    componentDidMount () {
-        this.patientRef = database.ref('/Patients-information');
-        this.patientRef.on('value', (snapshot) => {
-            this.setState({
-                data: snapshot.val()
+    componentDidMount() {
+        database.on('value', (snapshot) => {
+            let datas = [];
+            snapshot.forEach((info) => {
+                const { Patient_id, Patient_name, Patient_address ,Patient_age, Patient_cell, Patient_Gender, Appointment_Date} = info.val();
+                datas.push({ Patient_id, Patient_name, Patient_address, Patient_age, Patient_cell, Patient_Gender, Appointment_Date });
             });
+            console.log('datas', datas);
+            this.props.setDatas(datas);
         });
     }
     
@@ -50,6 +56,7 @@ class viewPatient extends Component{
         });
     }
     render(){
+        console.log('this.props.datas', this.props.datas);
         return (
                 <MuiThemeProvider>
                     <div>
@@ -71,12 +78,50 @@ class viewPatient extends Component{
                             </List>
                         </Drawer>
                         <div style={viewData}>
-                            { JSON.stringify(this.state.data) }
-                        </div>
+                            {
+                                // this.props.datas.map((info, index) => {
+                                //     return (
+                                //         <div key={index}>{info.Patient_address}</div>
+                                //     )
+                                // })
+                            }
+                        </div> 
                     </div>
                 </MuiThemeProvider>
         )
     }
 }
 
-export default viewPatient;
+function mapStateToProps( state ) {
+    const datas = state
+    return {
+        datas
+    }
+}
+
+export default connect(mapStateToProps, { setDatas }) (viewPatient);
+
+
+/* Testing rendering logic on DOM 
+
+
+    // componentDidMount () {
+    //     this.patientRef = database.ref().child('/Patients-information');
+    //     this.patientRef.on('value', (snapshot) => {
+    //         this.setState({
+    //             data: snapshot.val()
+    //         });
+    //         console.log(this.state.data)
+    //     });
+    // }
+
+
+                    // let PatientObj = info.val();
+                // console.log('PatientObj', PatientObj);
+
+*/
+
+//    this.patientRef = database.ref().child('/Patients-information');
+
+
+// { JSON.stringify(this.state.data, undefined, ' ') }

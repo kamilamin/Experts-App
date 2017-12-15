@@ -50,7 +50,7 @@ class SignIn extends Component{
                     <div style={{marginTop: '5px'}}>
                         <Link to='/signup'> Not registered ? Sign up instead</Link>
                     </div>
-                    <div>{this.state.error.message}</div>
+                    <div style={{color: 'red'}}>{this.state.error.message}</div>
                 </div>
             </div>
         )

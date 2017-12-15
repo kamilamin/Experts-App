@@ -51,7 +51,7 @@ class SignUp extends Component{
                     <div style={{marginTop: '5px'}}>
                         <Link to='/signin'> Already a user? Sign in instead</Link>
                     </div>
-                    <div>{this.state.error.message}</div>
+                    <div style={{color: 'red'}}>{this.state.error.message}</div>
                 </div>
             </div>
         )
