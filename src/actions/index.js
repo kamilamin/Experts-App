@@ -8,10 +8,21 @@ export function logUser(email) {
     return action;
 }
 
-export function setDatas(datas) {
-    const action = {
+// export function setDatas(datas) {
+//     console.log("setdatas call", datas)
+//     const action = {
+//         type: SET_DATAS,
+//         payload: datas
+//     }
+//     return action;
+// }
+
+export const setDatas = (datas) => {
+    console.log("setdatas call", datas)
+    return {
         type: SET_DATAS,
-        datas
+        payload: datas
     }
-    return action;
 }
+
+

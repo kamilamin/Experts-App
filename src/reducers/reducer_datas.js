@@ -1,12 +1,29 @@
 import { SET_DATAS } from '../constants';
 // import default from './index';
+const initialState = {
+    datas: []
+}
 
-export default (state = [], action) => {
-    switch(action.type) {
+// export default (state = initialState, action) => {
+//     switch(action.type) {
+//         case SET_DATAS:
+//             const { datas } = action;
+//             return datas;
+//         default:
+//             return state;        
+//     }
+// }
+
+
+export default (state = initialState, action) => {
+    switch (action.type) {
         case SET_DATAS:
-            const { datas } = action;
-            return datas;
+            return {
+                ...state,
+                datas: action.payload,
+            }
         default:
-            return state;        
+            return state;
     }
+
 }

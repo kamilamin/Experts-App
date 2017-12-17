@@ -13,27 +13,32 @@ import viewPatient from './components/viewPatient.js';
 import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { firebaseApp } from './firebase'
 import reducer from './reducers'
 import { logUser } from './actions'
+import thunk from 'redux-thunk'
 
 
-firebaseApp.auth().onAuthStateChanged(user => {
-    if(user) {
-        // console.log('User has signed in or up', user);
-        const { email } = user;
-        store.dispatch(logUser(email))
-        history.push('/App');
-    } else {
-        // console.log('User has signed out or still need to sign in.')
-        history.replace('/signin');
-    }
-})
+// firebaseApp.auth().onAuthStateChanged(user => {
+//     if(user) {
+//         // console.log('User has signed in or up', user);
+//         const { email } = user;
+//         store.dispatch(logUser(email))
+//         history.push('/App');
+//     } else {
+//         // console.log('User has signed out or still need to sign in.')
+//         history.replace('/signin');
+//     }
+// })
 
+
+const middleware = compose(
+    applyMiddleware(thunk)
+);
 
 const history = createBrowserHistory();
-const store = createStore(reducer);
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -49,7 +54,7 @@ ReactDOM.render(
                 <Route path="/viewpatient" component={viewPatient} />
             </div>
         </Router>
-    </Provider>, 
+    </Provider>,
     document.getElementById('root')
 );
 registerServiceWorker();

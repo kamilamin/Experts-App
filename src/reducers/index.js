@@ -6,3 +6,8 @@ export default combineReducers({
     user,
     datas
 });
+
+
+// const store = createStore(
+//     rootReducer,
+// );

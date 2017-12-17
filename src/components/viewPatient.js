@@ -9,7 +9,7 @@ import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
-import {Card, CardHeader } from 'material-ui/Card';
+import { Card, CardHeader } from 'material-ui/Card';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
@@ -30,7 +30,7 @@ const viewData = {
     marginLeft: 60,
     marginTop: 50
 }
-class viewPatient extends Component{
+class viewPatient extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -39,67 +39,87 @@ class viewPatient extends Component{
     }
 
     componentDidMount() {
-        database.on('value', (snapshot) => {
+        console.log("component did mount call")
+
+        // database.on('value', (snapshot) => {
             let datas = [];
-            snapshot.forEach((info) => {
-                const { Patient_id, Patient_name, Patient_address ,Patient_age, Patient_cell, Patient_Gender, Appointment_Date} = info.val();
-                datas.push({ Patient_id, Patient_name, Patient_address, Patient_age, Patient_cell, Patient_Gender, Appointment_Date });
-            });
-            console.log('datas', datas);
+            // snapshot.forEach((info) => {
+            // const { Patient_id, Patient_name, Patient_address ,Patient_age, Patient_cell, Patient_Gender, Appointment_Date} = info.val();
+            // datas.push({ Patient_id, Patient_name, Patient_address, Patient_age, Patient_cell, Patient_Gender, Appointment_Date });
+            // });
+
+            /**
+             * dummy array just for testing
+             * remove it when when you start getting data from firebase
+             */
+             datas = [{Patient_address: "dummy address"}, {Patient_address: "dummy address"}, {Patient_address: "dummy address"} ]
             this.props.setDatas(datas);
-        });
+        // });
     }
-    
+
     _toggleDrawer() {
         this.setState({
             drawerOpened: !this.state.drawerOpened
         });
     }
-    render(){
-        console.log('this.props.datas', this.props.datas);
+    render() {
+        console.log('this.props.datas', this.props);
         return (
-                <MuiThemeProvider>
-                    <div>
-                        <AppBar title='View Patients Information' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
-                        <Drawer open={this.state.drawerOpened} docked={false} onRequestChange={() => this._toggleDrawer()}>
-                            <List>
-                                <Card>
-                                    <CardHeader title="User" subtitle="User@gmail.com" avatar={UserJPG} />
-                                </Card>
-                                <br />
-                                <Divider style={dividerStyle} />
-                                 <ListItem leftAvatar={<Avatar icon={<Apps />} backgroundColor={blue500} />}><NavLink to="/App">Dashboard</NavLink></ListItem>
-                                 <ListItem leftAvatar={<Avatar icon={<Person />} backgroundColor={blue500} />}><NavLink to="/profile">Profile</NavLink></ListItem>
-                                 <ListItem leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} />}><NavLink to="/report">Reports</NavLink></ListItem>
-                                 <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />}><NavLink to="/patient">Patients</NavLink></ListItem>
-                                 <br />
-                                 <Divider style={dividerStyle} />
-                                <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
-                            </List>
-                        </Drawer>
-                        <div style={viewData}>
-                            {
-                                // this.props.datas.map((info, index) => {
-                                //     return (
-                                //         <div key={index}>{info.Patient_address}</div>
-                                //     )
-                                // })
+            <MuiThemeProvider>
+                <div>
+                    <AppBar title='View Patients Information' onLeftIconButtonTouchTap={() => this._toggleDrawer()} />
+                    <Drawer open={this.state.drawerOpened} docked={false} onRequestChange={() => this._toggleDrawer()}>
+                        <List>
+                            <Card>
+                                <CardHeader title="User" subtitle="User@gmail.com" avatar={UserJPG} />
+                            </Card>
+                            <br />
+                            <Divider style={dividerStyle} />
+                            <ListItem leftAvatar={<Avatar icon={<Apps />} backgroundColor={blue500} />}><NavLink to="/App">Dashboard</NavLink></ListItem>
+                            <ListItem leftAvatar={<Avatar icon={<Person />} backgroundColor={blue500} />}><NavLink to="/profile">Profile</NavLink></ListItem>
+                            <ListItem leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} />}><NavLink to="/report">Reports</NavLink></ListItem>
+                            <ListItem leftAvatar={<Avatar icon={<People />} backgroundColor={blue500} />}><NavLink to="/patient">Patients</NavLink></ListItem>
+                            <br />
+                            <Divider style={dividerStyle} />
+                            <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={() => this.signOut()} />
+                        </List>
+                    </Drawer>
+                    <div style={viewData}>
+                        {
+                                this.props.datas.map((info, index) => {
+                                    return (
+                                        <div key={index}>{info.Patient_address}</div>
+                                    )
+                                })
                             }
-                        </div> 
                     </div>
-                </MuiThemeProvider>
+                </div>
+            </MuiThemeProvider>
         )
     }
 }
 
-function mapStateToProps( state ) {
-    const datas = state
+
+
+const mapStateToProps = state => {
     return {
-        datas
+        datas: state.datas.datas,
     }
 }
 
-export default connect(mapStateToProps, { setDatas }) (viewPatient);
+/**
+ * Previously it was absent 
+ * now I added because we are playing with aync actions
+ */
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setDatas: (datas) => {
+            dispatch(setDatas(datas));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(viewPatient);
 
 
 /* Testing rendering logic on DOM 
