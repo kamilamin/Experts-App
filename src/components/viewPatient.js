@@ -41,20 +41,15 @@ class viewPatient extends Component {
     componentDidMount() {
         console.log("component did mount call")
 
-        // database.on('value', (snapshot) => {
+        database.on('value', (snapshot) => {
             let datas = [];
-            // snapshot.forEach((info) => {
-            // const { Patient_id, Patient_name, Patient_address ,Patient_age, Patient_cell, Patient_Gender, Appointment_Date} = info.val();
-            // datas.push({ Patient_id, Patient_name, Patient_address, Patient_age, Patient_cell, Patient_Gender, Appointment_Date });
-            // });
-
-            /**
-             * dummy array just for testing
-             * remove it when when you start getting data from firebase
-             */
-             datas = [{Patient_address: "dummy address"}, {Patient_address: "dummy address"}, {Patient_address: "dummy address"} ]
+            snapshot.forEach((info) => {
+            const { Patient_id, Patient_name, Patient_address ,Patient_age, Patient_cell, Patient_Gender, Appointment_Date } = info.val();
+            datas.push({ Patient_id, Patient_name, Patient_address, Patient_age, Patient_cell, Patient_Gender, Appointment_Date });
+            });
+             //datas = [{Patient_address: "dummy address"}, {Patient_address: "dummy address"}, {Patient_address: "dummy address"} ]
             this.props.setDatas(datas);
-        // });
+        });
     }
 
     _toggleDrawer() {
@@ -88,7 +83,7 @@ class viewPatient extends Component {
                         {
                                 this.props.datas.map((info, index) => {
                                     return (
-                                        <div key={index}>{info.Patient_address}</div>
+                                        <div key={index}>{info.Patient_id}, {info.Patient_name}, {info.Patient_address}, {info.Patient_age}, {info.Patient_cell}, {info.Patient_Gender}, {info.Appointment_Date}</div>
                                     )
                                 })
                             }
