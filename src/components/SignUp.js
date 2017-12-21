@@ -22,6 +22,7 @@ class SignUp extends Component{
         this.state = {
             email: '',
             password: '',
+            username: '',
             error: {
                 message: ''
             }
@@ -45,6 +46,7 @@ class SignUp extends Component{
                 <img style={{width: '55%', height: '80%'}} src={signup} alt='Welcome to system' />
                 <div style={form_login}>
                     <h2 style={form_heading}>SIGN UP</h2>
+                    <input className="form-control" type="text" placeholder='Enter Username' onChange={event => this.setState({username: event.target.value})} style={{marginBottom: '5px'}} required/>
                     <input className="form-control" type="text" placeholder='Email Address' onChange={event => this.setState({email: event.target.value})} style={{marginBottom: '5px'}} required/>
                     <input className='form-control' type="password" placeholder='Password' onChange={event => this.setState({password: event.target.value})} required />
                     <button className='btn btn-primary btn-block' type='button' onClick={ () => this.signUp() } style={{marginTop: '5px'}}>Sign Up</button>

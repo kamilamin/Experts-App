@@ -20,7 +20,7 @@ import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import { NavLink } from 'react-router-dom';
 
 const logoutStyles = {
-    marginTop: 285
+    marginTop: 265
 };
 
 const dividerStyle = {

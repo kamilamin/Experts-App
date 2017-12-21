@@ -20,7 +20,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { database } from '../firebase.js';
 
 const logoutStyles = {
-    marginTop: 275
+    marginTop: 235
 };
 
 const dividerStyle = {
@@ -93,11 +93,35 @@ class viewPatient extends Component {
                                         showExpandableButton={true}>
                                     </CardHeader>
                                     <CardText expandable={true}>
-                                        {info.Patient_address},
-                                        {info.Patient_Gender}, 
-                                        {info.Patient_age}, 
-                                        {info.Patient_cell}, 
-                                        {info.Appointment_Date}, <Link to='/report'><FlatButton label='Get Report' primary={true} /></Link>
+                                        <div>
+                                            <strong>ID:</strong>
+                                            {info.Patient_id}
+                                        </div>
+                                        <div>
+                                            <strong>Name:</strong>
+                                            {info.Patient_name}
+                                        </div>
+                                        <div>
+                                            <strong>Address:</strong>
+                                            {info.Patient_address}
+                                        </div>
+                                        <div>
+                                            <strong>Age:</strong>
+                                            {info.Patient_age}
+                                        </div>
+                                        <div>
+                                            <strong>Gender:</strong>
+                                            {info.Patient_Gender}
+                                        </div>
+                                        <div>
+                                            <strong>Contact:</strong>
+                                            {info.Patient_cell}
+                                        </div>
+                                        <div>
+                                            <strong>Appointment Date:</strong>
+                                            {info.Appointment_Date}
+                                        </div>
+                                        <Link to='/report'><FlatButton label='Get Report' secondary={true} /></Link>
                                     </CardText>
                                 </Card>
                             );

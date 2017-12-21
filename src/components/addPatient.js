@@ -22,7 +22,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { database } from '../firebase.js';
 
 const logoutStyles = {
-    marginTop: 275
+    marginTop: 235
 };
 
 const dividerStyle = {

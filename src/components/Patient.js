@@ -17,7 +17,7 @@ import Apps from 'material-ui/svg-icons/navigation/apps';
 import { NavLink, Link } from 'react-router-dom';
 
 const logoutStyles = {
-    marginTop: 275
+    marginTop: 235
 };
 
 const dividerStyle = {
