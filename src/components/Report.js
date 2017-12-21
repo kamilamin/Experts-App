@@ -5,6 +5,7 @@ class Report extends Component {
         return (
             <div>
                 <Drawer />
+                <h1>Work in Progress</h1>
             </div>
         )
     }

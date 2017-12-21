@@ -9,14 +9,14 @@ import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
-import { Card, CardHeader } from 'material-ui/Card';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import { blue500 } from 'material-ui/styles/colors';
 import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { database } from '../firebase.js';
 
 const logoutStyles = {
@@ -28,7 +28,8 @@ const dividerStyle = {
 }
 const viewData = {
     marginLeft: 60,
-    marginTop: 50
+    marginTop: 50,
+    marginRight: 60
 }
 class viewPatient extends Component {
     constructor(props, context) {
@@ -58,7 +59,7 @@ class viewPatient extends Component {
         });
     }
     render() {
-        console.log('this.props.datas', this.props);
+        // console.log('this.props.datas', this.props);
         return (
             <MuiThemeProvider>
                 <div>
@@ -79,15 +80,30 @@ class viewPatient extends Component {
                             <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={() => this.signOut()} />
                         </List>
                     </Drawer>
-                    <div style={viewData}>
-                        {
-                                this.props.datas.map((info, index) => {
-                                    return (
-                                        <div key={index}>{info.Patient_id}, {info.Patient_name}, {info.Patient_address}, {info.Patient_age}, {info.Patient_cell}, {info.Patient_Gender}, {info.Appointment_Date}</div>
-                                    )
-                                })
-                            }
-                    </div>
+
+                    <Card style={viewData}>
+                    {
+                        this.props.datas.map((info, index) => {
+                            return(
+                                <Card>
+                                    <CardHeader
+                                        title={info.Patient_id}
+                                        subtitle={info.Patient_name}
+                                        actAsExpander={true}
+                                        showExpandableButton={true}>
+                                    </CardHeader>
+                                    <CardText expandable={true}>
+                                        {info.Patient_address},
+                                        {info.Patient_Gender}, 
+                                        {info.Patient_age}, 
+                                        {info.Patient_cell}, 
+                                        {info.Appointment_Date}, <Link to='/report'><FlatButton label='Get Report' primary={true} /></Link>
+                                    </CardText>
+                                </Card>
+                            );
+                        })
+                    }
+                    </Card>
                 </div>
             </MuiThemeProvider>
         )
@@ -102,10 +118,6 @@ const mapStateToProps = state => {
     }
 }
 
-/**
- * Previously it was absent 
- * now I added because we are playing with aync actions
- */
 const mapDispatchToProps = (dispatch) => {
     return {
         setDatas: (datas) => {
@@ -118,7 +130,26 @@ export default connect(mapStateToProps, mapDispatchToProps)(viewPatient);
 
 
 /* Testing rendering logic on DOM 
+    // View patient testing
 
+
+    <Card style={viewData}>
+                            {
+                                    this.props.datas.map((info, index) => {
+                                        return (
+                                            <CardText key={index}>
+                                                <strong>Patient ID: {info.Patient_id} </strong>,
+                                                <strong>Patient Name: {info.Patient_name}</strong>,
+                                                <strong>Patient Address: {info.Patient_address}</strong>,
+                                                <strong>Patient Age: {info.Patient_age}</strong>, 
+                                                <strong>Patient Cell: {info.Patient_cell}</strong>, 
+                                                <strong>Patient Gender: {info.Patient_Gender}</strong>, 
+                                                <strong>Patient Appointment: {info.Appointment_Date}</strong> <Link to='/report'><FlatButton label='Get Report' primary={true} /></Link>
+                                            </CardText>
+                                        )
+                                    })
+                            }
+                        </Card>
 
     // componentDidMount () {
     //     this.patientRef = database.ref().child('/Patients-information');

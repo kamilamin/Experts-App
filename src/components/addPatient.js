@@ -37,7 +37,7 @@ class addPatient extends Component{
         super();
         this.state = {
             drawerOpened: false,
-            // value: 1,
+             value: 'Male',
             Patient_name: '',
             Patient_id: '',
             Patient_address: '',
@@ -109,7 +109,7 @@ class addPatient extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
-                        <h1 style={ heading }>Patient Registeration</h1>
+                        <h1 style={ heading }>Patient Registeration Form</h1>
                         <form style={{marginLeft: '25%', marginTop: 15}}>
                             <div style={{width: '60%', marginLeft: 20}}>
                                 <TextField value={ Patient_id } style={{marginTop: -25}} fullWidth={true} onChange={(event) => this.setState({ Patient_id: event.target.value })} hintText='Patient ID' floatingLabelText='Enter Patient ID'/>
@@ -133,9 +133,12 @@ class addPatient extends Component{
                                 <TextField value={ Patient_age } style={{marginTop: -25}} fullWidth={true} onChange={ (event) => this.setState({ Patient_age: event.target.value }) } hintText='Age' floatingLabelText='Age'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
+                                <label>
+                                    Appointment Date: 
+                                    <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
+                                </label>
                             </div>
-                            <Link to='/patient'><FlatButton primary={true}  label="Submit" onClick={this.submitPatient} /></Link>
+                            <Link to='/viewpatient'><FlatButton primary={true}  label="Submit" onClick={this.submitPatient} /></Link>
                             <RaisedButton to='/patient' label='Submit' fullWidth={false} primary={true} style={{ marginTop: 25, marginLeft: '40%'}} onClick={this.submitPatient}/>
                             <Link to='/patient'><FlatButton primary={true}  label="Cancel" /></Link>
                         </form>

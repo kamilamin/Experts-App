@@ -16,13 +16,13 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { firebaseApp } from './firebase'
 import reducer from './reducers'
-import { logUser } from './actions'
+import { logUser } from './actions';
 import thunk from 'redux-thunk'
 
 
 firebaseApp.auth().onAuthStateChanged(user => {
     if(user) {
-        // console.log('User has signed in or up', user);
+        //console.log('User has signed in or up', user);
         const { email } = user;
         store.dispatch(logUser(email));
         history.push('/App');
