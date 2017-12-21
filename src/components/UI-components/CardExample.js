@@ -3,7 +3,9 @@ import {Card, CardText} from 'material-ui/Card';
 import Slider from './Slider.js';
 
 const cardStyles = {
-  margin: 80
+  marginLeft: 200,
+  marginRight: 200,
+  marginTop: 30,  
 }
 
 const CardExample = () => (

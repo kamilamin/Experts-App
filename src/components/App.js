@@ -18,6 +18,7 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import { NavLink } from 'react-router-dom';
+// import { database } from 'firebase';
 
 const logoutStyles = {
     marginTop: 265
@@ -36,6 +37,11 @@ class app extends Component{
             drawerOpened: false
         }
     }
+    // componentDidMount() {
+    //     database.once('value', (snapshot) => {
+    //         console.log('count' + snapshot.numChildren());
+    //     })
+    // }
     _toggleDrawer() {
         this.setState({
             drawerOpened: !this.state.drawerOpened
@@ -65,6 +71,7 @@ class app extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
+                        <h1 style={{textAlign: "center"}}>Dashboard</h1>
                         <CardExample />
                     </div>
                 </MuiThemeProvider>
