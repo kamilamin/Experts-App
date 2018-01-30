@@ -18,6 +18,7 @@ import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
 import { NavLink, Link } from 'react-router-dom';
 import { database } from '../firebase.js';
+import { auth } from '../firebase.js';
 
 const logoutStyles = {
     marginTop: 235
@@ -40,7 +41,7 @@ class viewPatient extends Component {
     }
 
     componentDidMount() {
-        console.log("component did mount call")
+        console.log("component did mount call");
 
         database.on('value', (snapshot) => {
             let datas = [];
