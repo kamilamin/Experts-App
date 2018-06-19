@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
-import CardExample from './UI-components/CardExample';
+import CardExample from './UI-components/CardExample'; // Carosel Component
 import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
@@ -18,6 +18,7 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import { NavLink } from 'react-router-dom';
+import Calender from './Calender';
 // import { database } from 'firebase';
 
 const logoutStyles = {
@@ -26,6 +27,10 @@ const logoutStyles = {
 
 const dividerStyle = {
     margin: 10
+}
+const styleCalender = {
+    position: "relative",
+    margin: "50px auto"
 }
 
 injectTapEventPlugin();
@@ -72,7 +77,7 @@ class app extends Component{
                             </List>
                         </Drawer>
                         <h1 style={{textAlign: "center"}}>Dashboard</h1>
-                        <CardExample />
+                        <Calender style={styleCalender} width="320px"  />
                     </div>
                 </MuiThemeProvider>
         )
