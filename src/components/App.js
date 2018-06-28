@@ -6,7 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { List, ListItem } from 'material-ui/List';
-import CardExample from './UI-components/CardExample'; // Carosel Component
 import Avatar from 'material-ui/Avatar';
 import UserJPG from './image/user.jpg';
 import FlatButton from 'material-ui/FlatButton';
@@ -19,6 +18,8 @@ import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import { NavLink } from 'react-router-dom';
 import Calender from './Calender';
+import Carousel from './Carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import { database } from 'firebase';
 
 const logoutStyles = {
@@ -84,9 +85,8 @@ class app extends Component{
                         </Drawer>
                         <h1 style={{textAlign: "center"}}>Dashboard</h1>
                         <Calender style={styleCalender} width="400px" onDayClick={(e, day) => this.onDayClick(e, day)} />
-                        <div style={{marginTop: '-19%', border: '1px solid #000', width: '59%', marginLeft: 5}}>
-                            <CardExample />
-                            kamilamin
+                        <div style={{marginTop: '-19%', border: '1px solid #000', width: '40%', marginLeft: 5}}>
+                            <Carousel />
                         </div>
                     </div>
                 </MuiThemeProvider>
