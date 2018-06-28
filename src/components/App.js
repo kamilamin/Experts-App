@@ -30,7 +30,8 @@ const dividerStyle = {
 }
 const styleCalender = {
     position: "relative",
-    margin: "50px auto"
+    margin: "10px auto",
+    marginLeft: "60%"
 }
 
 injectTapEventPlugin();
@@ -56,7 +57,12 @@ class app extends Component{
         firebaseApp.auth().signOut();
     }
     
+    onDayClick = (e, day) => {
+        alert(day);
+    }
+
     render(){
+
         return (
                 <MuiThemeProvider>
                     <div>
@@ -77,7 +83,11 @@ class app extends Component{
                             </List>
                         </Drawer>
                         <h1 style={{textAlign: "center"}}>Dashboard</h1>
-                        <Calender style={styleCalender} width="320px"  />
+                        <Calender style={styleCalender} width="400px" onDayClick={(e, day) => this.onDayClick(e, day)} />
+                        <div style={{marginTop: '-19%', border: '1px solid #000', width: '59%', marginLeft: 5}}>
+                            <CardExample />
+                            kamilamin
+                        </div>
                     </div>
                 </MuiThemeProvider>
         )
