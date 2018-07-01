@@ -85,6 +85,9 @@ class addPatient extends Component{
                         Appointment_Date: this.state.Appointment_Date
                         });
     }
+    fileSelectedHandler = (event) => {
+        console.log(event.target.files[0])
+    }
     render(){
         const { Patient_id } = this.state;
         const { Patient_name } = this.state;
@@ -143,19 +146,11 @@ class addPatient extends Component{
                                     <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
                                 </label>
                             </div>
-                            <div style={{marginLeft: '5%'}}>
-                                <ImagesUploader
-                                    url="http://localhost:9090/notmultiple"
-                                    optimisticPreviews
-                                    value={ Patient_images }
-                                    multiple={false}
-                                    onLoadEnd={(err) => {
-                                        if (err) {
-                                            console.error(err);
-                                        }
-                                    }}
-                                    label="Upload a Patient Image"
-                                />
+                            <div style={{width: '60%', marginLeft: 20}}>
+                                <label>
+                                    Images upload: 
+                                    <input style={{width: 300}} type="file" value={ Patient_images } onChange={this.fileSelectedHandler} />
+                                </label>
                             </div>
                             <RaisedButton to='/patient' label='Submit' fullWidth={false} primary={true} style={{ marginTop: 25, marginLeft: '40%'}} onClick={this.submitPatient}/>
                             <Link to='/patient'><FlatButton primary={true}  label="Cancel" /></Link>
