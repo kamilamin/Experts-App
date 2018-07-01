@@ -20,6 +20,9 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { database } from '../firebase.js';
+import ImagesUploader from 'react-images-uploader';
+import 'react-images-uploader/styles.css';
+import 'react-images-uploader/font.css';
 
 const logoutStyles = {
     marginTop: 235
@@ -140,11 +143,19 @@ class addPatient extends Component{
                                     <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
                                 </label>
                             </div>
-                            <div style={{width: '60%', marginLeft: 20}}>
-                                <label>
-                                    Input Image: 
-                                    <input style={{width: 300}} type="file" value={ Patient_images } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
-                                </label>
+                            <div style={{marginLeft: '5%'}}>
+                                <ImagesUploader
+                                    url="http://localhost:9090/notmultiple"
+                                    optimisticPreviews
+                                    value={ Patient_images }
+                                    multiple={false}
+                                    onLoadEnd={(err) => {
+                                        if (err) {
+                                            console.error(err);
+                                        }
+                                    }}
+                                    label="Upload a Patient Image"
+                                />
                             </div>
                             <RaisedButton to='/patient' label='Submit' fullWidth={false} primary={true} style={{ marginTop: 25, marginLeft: '40%'}} onClick={this.submitPatient}/>
                             <Link to='/patient'><FlatButton primary={true}  label="Cancel" /></Link>
@@ -155,4 +166,4 @@ class addPatient extends Component{
     }
 }
 
-export default addPatient;                                                          
+export default addPatient;

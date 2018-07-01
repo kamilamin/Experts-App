@@ -83,9 +83,9 @@ class app extends Component{
                                 <FlatButton style={logoutStyles} icon={<Logout />} label="Signout" fullWidth={true} onTouchTap={ () => this.signOut()} />
                             </List>
                         </Drawer>
-                        <h1 style={{textAlign: "center"}}>Dashboard</h1>
+                        <h1 style={{textAlign: "center"}}>Welcome to Dermest</h1>
                         <Calender style={styleCalender} width="400px" onDayClick={(e, day) => this.onDayClick(e, day)} />
-                        <div style={{marginTop: '-19%', border: '1px solid #000', width: '55%', marginLeft: 20}}>
+                        <div style={{marginTop: '-17%', width: '55%', marginLeft: 20}}>
                             <Carousel />
                         </div>
                     </div>
