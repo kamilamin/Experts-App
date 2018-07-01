@@ -44,7 +44,8 @@ class addPatient extends Component{
             Patient_cell: '',
             Patient_age: '',
             Patient_Gender: '',
-            Appointment_Date: ''
+            Appointment_Date: '',
+            Patient_images: ''
         }
         //this.patientRef = database.ref('/Patients-information');
         this.submitPatient = this.submitPatient.bind(this);
@@ -89,6 +90,7 @@ class addPatient extends Component{
         const { Patient_age } = this.state;
         const { Patient_Gender } = this.state;
         const { Appointment_Date } = this.state;
+        const { Patient_images } = this.state;
         return (
                 <MuiThemeProvider>
                     <div>
@@ -138,7 +140,12 @@ class addPatient extends Component{
                                     <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
                                 </label>
                             </div>
-                            <Link to='/viewpatient'><FlatButton primary={true}  label="Submit" onClick={this.submitPatient} /></Link>
+                            <div style={{width: '60%', marginLeft: 20}}>
+                                <label>
+                                    Input Image: 
+                                    <input style={{width: 300}} type="file" value={ Patient_images } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
+                                </label>
+                            </div>
                             <RaisedButton to='/patient' label='Submit' fullWidth={false} primary={true} style={{ marginTop: 25, marginLeft: '40%'}} onClick={this.submitPatient}/>
                             <Link to='/patient'><FlatButton primary={true}  label="Cancel" /></Link>
                         </form>
