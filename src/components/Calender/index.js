@@ -131,7 +131,7 @@ class Calender extends Component {
     }
 
     onKeyUpYear = (e) => {
-        if(e.which == 13 || e.which == 27){
+        if(e.which === 13 || e.which === 27){
             this.setYear(e.target.value);
             this.setState({
                 showYearNav: false
@@ -196,7 +196,7 @@ class Calender extends Component {
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++ ) {
             let className = (d == this.currentDay() ? "day current-day" : "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "");
+            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
             daysInMonth.push(
                 <td key={d} className={className + selectedClass}>
                     <span onClick={(e) => {this.onDayClick(e, d)}}>{d}</span>

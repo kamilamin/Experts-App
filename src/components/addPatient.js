@@ -20,7 +20,6 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { database } from '../firebase.js';
-import ImagesUploader from 'react-images-uploader';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 
