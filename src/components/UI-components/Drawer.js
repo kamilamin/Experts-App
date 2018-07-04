@@ -14,7 +14,8 @@ import Person from 'material-ui/svg-icons/social/person';
 import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { firebaseApp } from '../../firebase';
 
 const logoutStyles = {
     marginTop: 235
@@ -36,6 +37,11 @@ class Report extends Component{
             drawerOpened: !this.state.drawerOpened
         });
     }
+
+    signOut(){
+        firebaseApp.auth().signOut();
+    }
+    
     render(){
         return (
                 <MuiThemeProvider>
