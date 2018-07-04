@@ -15,6 +15,7 @@ import People from 'material-ui/svg-icons/social/people';
 import Logout from 'material-ui/svg-icons/action/power-settings-new';
 import Apps from 'material-ui/svg-icons/navigation/apps';
 import { NavLink, Link } from 'react-router-dom';
+import { firebaseApp } from '../firebase.js';
 
 const logoutStyles = {
     marginTop: 235
@@ -45,6 +46,10 @@ class Patient extends Component{
         this.setState({
             drawerOpened: !this.state.drawerOpened
         });
+    }
+
+    signOut(){
+        firebaseApp.auth().signOut();
     }
     render(){
         return (

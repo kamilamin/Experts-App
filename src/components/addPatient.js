@@ -20,6 +20,7 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { database } from '../firebase.js';
+import { firebaseApp } from '../firebase.js';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 
@@ -86,6 +87,10 @@ class addPatient extends Component{
     }
     fileSelectedHandler = (event) => {
         console.log(event.target.files[0])
+    }
+
+    signOut(){
+        firebaseApp.auth().signOut();
     }
     render(){
         const { Patient_id } = this.state;
