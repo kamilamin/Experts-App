@@ -124,16 +124,16 @@ class addPatient extends Component{
                         <h1 style={ heading }>Patient Registeration Form</h1>
                         <form style={{marginLeft: '25%', marginTop: 15}}>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <TextField value={ Patient_id } style={{marginTop: -25}} fullWidth={true} onChange={(event) => this.setState({ Patient_id: event.target.value })} hintText='Patient ID' floatingLabelText='Enter Patient ID'/>
+                                <TextField value={ Patient_id } style={{marginTop: -25}} required fullWidth={true} onChange={(event) => this.setState({ Patient_id: event.target.value })} hintText='Patient ID' floatingLabelText='Enter Patient ID'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <TextField value={ Patient_name } style={{marginTop: -25}} fullWidth={true} onChange={(event) => this.setState({ Patient_name: event.target.value })} hintText='Enter Full Name' floatingLabelText='Enter Full Name'/>
+                                <TextField value={ Patient_name } style={{marginTop: -25}} required fullWidth={true} onChange={(event) => this.setState({ Patient_name: event.target.value })} hintText='Enter Full Name' floatingLabelText='Enter Full Name'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <TextField value={ Patient_address } style={{marginTop: -25}} fullWidth={true} onChange={(event) => this.setState({ Patient_address: event.target.value })} hintText='Enter Patient Address' floatingLabelText='Enter Patient Address'/>
+                                <TextField value={ Patient_address } style={{marginTop: -25}} required fullWidth={true} onChange={(event) => this.setState({ Patient_address: event.target.value })} hintText='Enter Patient Address' floatingLabelText='Enter Patient Address'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <TextField value={ Patient_cell } style={{marginTop: -25}} fullWidth={true} onChange={(event) => this.setState({ Patient_cell: event.target.value })} hintText='Contact No' floatingLabelText='Enter Patient Contact No'/>
+                                <TextField value={ Patient_cell } style={{marginTop: -25}} required fullWidth={true} onChange={(event) => this.setState({ Patient_cell: event.target.value })} hintText='Contact No' floatingLabelText='Enter Patient Contact No'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
                                 <SelectField fullWidth={true} style={{marginTop: -25}} floatingLabelText="Gender" value={Patient_Gender} onChange={this._genderChange}>
@@ -142,18 +142,18 @@ class addPatient extends Component{
                                 </SelectField>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
-                                <TextField value={ Patient_age } style={{marginTop: -25}} fullWidth={true} onChange={ (event) => this.setState({ Patient_age: event.target.value }) } hintText='Age' floatingLabelText='Age'/>
+                                <TextField value={ Patient_age } required style={{marginTop: -25}} type="number" fullWidth={true} onChange={ (event) => this.setState({ Patient_age: event.target.value }) } hintText='Age' floatingLabelText='Age'/>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
                                 <label>
                                     Appointment Date: 
-                                    <input style={{width: 300}} type="date" value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
+                                    <input style={{width: 300}} type="date" required value={ Appointment_Date } onChange={(event) => this.setState({Appointment_Date: event.target.value})} />
                                 </label>
                             </div>
                             <div style={{width: '60%', marginLeft: 20}}>
                                 <label>
                                     Images upload: 
-                                    <input style={{width: 300}} type="file" value={ Patient_images } onChange={this.fileSelectedHandler} />
+                                    <input style={{width: 300}} required type="file" value={ Patient_images } onChange={this.fileSelectedHandler} />
                                 </label>
                             </div>
                             <RaisedButton to='/patient' label='Submit' fullWidth={false} primary={true} style={{ marginTop: 25, marginLeft: '40%'}} onClick={this.submitPatient}/>

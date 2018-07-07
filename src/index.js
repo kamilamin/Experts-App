@@ -8,6 +8,7 @@ import SignIn from './components/SignIn.js';
 import Patient from './components/Patient.js';
 import Report from './components/Report.js';
 import Profile from './components/Profile.js';
+import Api from './client/Api'
 import addPatient from './components/addPatient.js';
 import viewPatient from './components/viewPatient.js';
 import { Router, Route } from 'react-router-dom';
@@ -52,6 +53,7 @@ ReactDOM.render(
                 <Route path="/profile" component={Profile} />
                 <Route path="/addpatient" component={addPatient} />
                 <Route path="/viewpatient" component={viewPatient} />
+                <Route path="/api" component={Api} />
             </div>
         </Router>
     </Provider>,
